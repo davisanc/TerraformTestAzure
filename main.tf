@@ -151,7 +151,10 @@ module "application-gateway" {
     { name = "backend-address-pool-1" },
     { name = "backend-address-pool-2", ip_addresses = "10.0.0.4,10.0.0.5,10.0.0.6" }
   ]
-  http_listeners        = [{ name = "http-listener", frontend_ip_configuration = "Public", port = 80, protocol = "http" }]
+  http_listeners = [
+    { name = "http-listener", frontend_ip_configuration = "Public", port = 80, protocol = "http" },
+    { name =  "http-listener-2", fronted_ip_configuration = "Public", port = 443, protocol = "https"}
+  ]
   backend_http_settings = [{ name = "backend-http-setting", port = 80, protocol = "http", request_timeout = 20 }]
   request_routing_rules = [
     {
@@ -162,7 +165,7 @@ module "application-gateway" {
     },
     {
       name                       = "request-routing-rule-2"
-      http_listener_name         = "http-listener"
+      http_listener_name         = "http-listener-2"
       backend_address_pool_name  = "backend-address-pool-2"
       backend_http_settings_name = "backend-http-setting"
     }
