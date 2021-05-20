@@ -56,7 +56,7 @@ module "application-gateway" {
   resource_group_name       = azurerm_resource_group.rg.name
   location                  = azurerm_resource_group.rg.location
   sku                       = { tier = "WAF_v2", size = "WAF_v2", capacity = 2 }
-  subnet_id                 = azurerm_subnet.subnet.id
+  subnet_id                 = azurerm_subnet.app-gw-subnet.id
   frontend_ip_configuration = { public_ip_address_id = azurerm_public_ip.pip.id, private_ip_address = "10.0.2.10", private_ip_address_allocation = "Static" }
   backend_address_pools = [
     { name = "backend-address-pool-1" },
