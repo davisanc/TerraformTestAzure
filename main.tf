@@ -162,12 +162,6 @@ module "application-gateway" {
       http_listener_name         = "http-listener"
       backend_address_pool_name  = "backend-address-pool-1"
       backend_http_settings_name = "backend-http-setting"
-    },
-    {
-      name                       = "request-routing-rule-2"
-      http_listener_name         = "http-listener-2"
-      backend_address_pool_name  = "backend-address-pool-2"
-      backend_http_settings_name = "backend-http-setting"
     }
   ]
 }
