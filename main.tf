@@ -35,8 +35,8 @@ resource "azurerm_subnet" "sn" {
   address_prefixes       = ["10.0.1.0/24"]
 }
 # Create our Azure Storage Account - WAF-DevOp-sa
-resource "azurerm_storage_account" "WAF-DevOp-sa" {
-  name                     = "WAF-DevOp-sa"
+resource "azurerm_storage_account" "wafdevopssa" {
+  name                     = "wafdevopssa"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
@@ -86,8 +86,8 @@ resource "azurerm_virtual_machine" "WAF-DevOp-vm01" {
 }
 resource "azurerm_web_application_firewall_policy" "WAF-Devops-waf" {
   name                = "WAF-Devops-wafpolicy"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
 
   custom_rules {
     name      = "Rule1"
