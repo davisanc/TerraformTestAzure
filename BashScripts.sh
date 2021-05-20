@@ -1,12 +1,12 @@
 #!/bin/bash
 #COnnect and set Subscription Context in Azure
-az login
-az account set --subscription "MPN - John Lunn"
+#az login
+#az account set --subscription "MPN - John Lunn"
 
 
 #Set Variables for Storage account and Key Vault that support the Terraform implementation
-RESOURCE_GROUP_NAME=jonnychipz-infra
-STORAGE_ACCOUNT_NAME=jonnychipztstate
+RESOURCE_GROUP_NAME=WAF-DevOps
+STORAGE_ACCOUNT_NAME=wafdevopststate
 CONTAINER_NAME=tstate
 STATE_FILE="terraform.state"
 
@@ -29,6 +29,6 @@ echo "access_key: $ACCOUNT_KEY"
 echo "state_file: $STATE_FILE"
 
 # Create KeyVault and example of storing a key
-az keyvault create --name "jonnychipzkv" --resource-group "jonnychipz-infra" --location uksouth
-az keyvault secret set --vault-name "jonnychipzkv" --name "tstateaccess" --value {$ACCOUNT_KEY}
-az keyvault secret show --vault-name "jonnychipzkv" --name "tstateaccess"
+az keyvault create --name "WafDevopskv" --resource-group "WAF-DevOps" --location uksouth
+az keyvault secret set --vault-name "wafdevopsvault" --name "tstateaccess" --value {$ACCOUNT_KEY}
+az keyvault secret show --vault-name "wafdevopsvault" --name "tstateaccess"
