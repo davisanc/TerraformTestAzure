@@ -154,11 +154,12 @@ module "application-gateway" {
   sku                       = { tier = "WAF_v2", size = "WAF_v2", capacity = 2 }
   subnet_id                 = azurerm_subnet.app-gw-subnet.id
   frontend_ip_configuration = { public_ip_address_id = azurerm_public_ip.pip.id, private_ip_address = "10.0.2.10", private_ip_address_allocation = "Static" }
+  #firewall_policy_id = data.azurerm_web_application_firewall_policy.policyexample.id
   backend_address_pools = [
     { name = "backend-address-pool-1" },
     { name = "backend-address-pool-2", ip_addresses = "10.0.0.4,10.0.0.5,10.0.0.6" }
   ]
-  http_listeners        = [{ name = "http-listener", frontend_ip_configuration = "Public", port = 80, protocol = "http", firewall_policy_id = data.azurerm_web_application_firewall_policy.policyexample.id }]
+  http_listeners        = [{ name = "http-listener", frontend_ip_configuration = "Public", port = 80, protocol = "http" }]
   backend_http_settings = [{ name = "backend-http-setting", port = 80, protocol = "http", request_timeout = 20 }]
   request_routing_rules = [
     {
