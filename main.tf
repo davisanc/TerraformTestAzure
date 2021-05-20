@@ -1,4 +1,11 @@
 terraform {
+  backend "azurerm" {
+    resource_group_name   = "WAF-DevOps"
+    storage_account_name  = "wafdevopssa"
+    container_name        = "tstate"
+    key                   = "3NJdZh08UDkzl9hiopaM+EobJY+f7Lo1U5PAyBm2WZaICPY3c+Cwy5iLbS8bRY+DhUrUKZAgj9EBtDI0xn4mKA=="
+}
+  
   required_providers {
     azurerm = {
       # Specify what version of the provider we are going to utilise
@@ -14,6 +21,7 @@ provider "azurerm" {
     }
   }
 }
+
 data "azurerm_client_config" "current" {}
 # Create our Resource Group - WAF-DevOps-RG
 resource "azurerm_resource_group" "rg" {
