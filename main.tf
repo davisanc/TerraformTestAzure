@@ -136,14 +136,6 @@ resource "azurerm_web_application_firewall_policy" "WAF-Devops-waf" {
 
 }
 
-data "azurerm_web_application_firewall_policy" "policyexample" {
-  resource_group_name = azurerm_resource_group.rg.name
-  name                = "WAF-Devops-wafpolicy"
-}
-
-output "id" {
-  value = data.azurerm_web_application_firewall_policy.policyexample.id
-}
 
 module "application-gateway" {
   source                    = "aztfm/application-gateway/azurerm"
