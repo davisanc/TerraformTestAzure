@@ -4,7 +4,7 @@ terraform {
     storage_account_name  = "wafdevopssa"
     container_name        = "tstate"
   }
-  
+
   required_providers {
     azurerm = {
       # Specify what version of the provider we are going to utilise
@@ -180,7 +180,7 @@ resource "azurerm_storage_account" "wafdevopssa" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   tags = {
-    environment = "WAF-DevOps"
+    environment = "WAF-DevOps-env"
   }
 }
 # Create our vNIC for our VM and assign it to our Virtual Machines Subnet
