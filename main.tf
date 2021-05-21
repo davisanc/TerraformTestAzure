@@ -180,7 +180,7 @@ resource "azurerm_storage_account" "wafdevopssa" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
   tags = {
-    environment = "WAF-DevOps-env"
+    environment = "WAF-DevOps"
   }
 }
 # Create our vNIC for our VM and assign it to our Virtual Machines Subnet
