@@ -3,8 +3,7 @@ terraform {
     resource_group_name   = "WAF-DevOps"
     storage_account_name  = "wafdevopssa"
     container_name        = "tstate"
-    key                   = "3NJdZh08UDkzl9hiopaM+EobJY+f7Lo1U5PAyBm2WZaICPY3c+Cwy5iLbS8bRY+DhUrUKZAgj9EBtDI0xn4mKA=="
-}
+  }
   
   required_providers {
     azurerm = {
