@@ -29,7 +29,7 @@ data "azurerm_resource_group" "rg" {
   #location = "UK South"
 }
 output "rg" {
-rg = data.azurerm.azurerm_resource_group.rg.id
+  value = data.azurerm.azurerm_resource_group.rg.id
 }
 # Create our Virtual Network - WAF-DevOps-VNET
 resource "azurerm_virtual_network" "vnet" { 
