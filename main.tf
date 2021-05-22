@@ -28,6 +28,9 @@ data "azurerm_resource_group" "rg" {
   name     = "WAF-DevOps"
   #location = "UK South"
 }
+output "rg" {
+rg = data.azurerm.azurerm_resource_group.rg.id
+}
 # Create our Virtual Network - WAF-DevOps-VNET
 resource "azurerm_virtual_network" "vnet" { 
   name                = "WAF-Devops-vnet"
