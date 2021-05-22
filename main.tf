@@ -23,12 +23,13 @@ provider "azurerm" {
 
 data "azurerm_client_config" "current" {}
 # Create our Resource Group - WAF-DevOps-RG
-resource "azurerm_resource_group" "rg" {
+#resource "azurerm_resource_group" "rg" {
+data "azurerm_resource_group" "rg" {
   name     = "WAF-DevOps"
   location = "UK South"
 }
 # Create our Virtual Network - WAF-DevOps-VNET
-resource "azurerm_virtual_network" "vnet" {
+resource "azurerm_virtual_network" "vnet" { 
   name                = "WAF-Devops-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.rg.location
