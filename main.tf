@@ -170,6 +170,7 @@ module "application-gateway" {
       backend_http_settings_name = "backend-http-setting"
     }
   ]
+  firewall_policy_id = "/subscriptions/60e79550-d86a-4c92-a4e1-c7faa8c6ae74/resourceGroups/WAF-DevOps-app/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/WAF-Devops-wafpolicy"
 }
 
 # Create our Azure Storage Account - WAF-DevOp-sa
