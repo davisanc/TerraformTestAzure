@@ -24,6 +24,7 @@ resource "azurerm_public_ip" "example" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Dynamic"
+  sku                 = "Standard"
 }
 
 locals {
