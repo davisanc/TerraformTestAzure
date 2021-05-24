@@ -23,7 +23,7 @@ resource "azurerm_public_ip" "example" {
   name                = "example-pip"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"
   sku                 = "Standard"
 }
 
