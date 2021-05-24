@@ -1,7 +1,7 @@
 terraform {
   backend "azurerm" {
     resource_group_name   = "WAF-DevOps"
-    storage_account_name  = "wafdevopssa"
+    storage_account_name  = "wafdevopssaint"
     container_name        = "tstate"
   }
 
