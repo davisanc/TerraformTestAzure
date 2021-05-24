@@ -2,21 +2,21 @@ resource "azurerm_virtual_network" "example" {
   name                = "example-network"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  address_space       = ["172.16.0/16"]
+  address_space       = ["10.1.0/16"]
 }
 
 resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
-  address_prefixes     = ["172.16.1.0/24"]
+  address_prefixes     = ["10.1.1.0/24"]
 }
 
 resource "azurerm_subnet" "backend" {
   name                 = "backend"
   resource_group_name  = azurerm_resource_group.rg.name
   virtual_network_name = azurerm_virtual_network.example.name
-  address_prefixes     = ["172.16.2.0/24"]
+  address_prefixes     = ["10.1.2.0/24"]
 }
 
 resource "azurerm_public_ip" "example" {
