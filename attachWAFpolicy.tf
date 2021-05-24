@@ -42,7 +42,7 @@ resource "azurerm_application_gateway" "network" {
   location            = azurerm_resource_group.rg.location
 
   sku {
-    size     = "WAF_v2"
+    name     = "WAF_v2"
     tier     = "WAF_v2"
     capacity = 2
   }
