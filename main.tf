@@ -173,8 +173,8 @@ module "application-gateway" {
 }
 
 # Create our Azure Storage Account - WAF-DevOp-sa
-resource "azurerm_storage_account" "wafdevopssa" {
-  name                     = "wafdevopssa"
+resource "azurerm_storage_account" "wafdevopssa-app" {
+  name                     = "wafdevopssa-app"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
