@@ -16,7 +16,7 @@ resource "azurerm_app_service" "example" {
   app_service_plan_id = azurerm_app_service_plan.example.id
 
   site_config {
-    linux_fx_version = "DOCKER|mohitkusecurity/juice-shop-updated:latest"
+    linux_fx_version = "DOCKER|${var.docker_image}:${var.docker_image_tag}"
     always_on = true
   }
 
