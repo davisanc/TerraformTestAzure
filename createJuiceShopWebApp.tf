@@ -8,7 +8,7 @@ resource "azurerm_app_service_plan" "example" {
     size = "S1"
   }
 }
-
+#just a comment for change
 resource "azurerm_app_service" "example" {
   name                = "juiceshop-app-service"
   location            = azurerm_resource_group.rg.location
