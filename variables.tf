@@ -1,3 +1,4 @@
+#define variables
 variable "docker_image" {
     description = "Docker image name"
 }
