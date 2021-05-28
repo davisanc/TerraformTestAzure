@@ -67,7 +67,7 @@ resource "azurerm_application_gateway" "network" {
 
   backend_address_pool {
     name = local.backend_address_pool_name
-    ip_addresses = [ "juiceshop-app-service.azurewebsites.net" ]
+    fqdns = [ "juiceshop-app-service.azurewebsites.net" ]
   }
 
   backend_http_settings {
