@@ -78,6 +78,7 @@ resource "azurerm_application_gateway" "network" {
     port                  = 443
     protocol              = "Https"
     request_timeout       = 60
+    host_name             = "${azurerm_app_service.example.name}azurewebsites.net"
   }
 
   http_listener {
