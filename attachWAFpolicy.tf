@@ -35,6 +35,7 @@ locals {
   listener_name                  = "${azurerm_virtual_network.example.name}-httplstn"
   request_routing_rule_name      = "${azurerm_virtual_network.example.name}-rqrt"
   redirect_configuration_name    = "${azurerm_virtual_network.example.name}-rdrcfg"
+  appservice_fqdn                = "${azurerm_app_service.example.name}azurewebsites.net"
 }
 
 resource "azurerm_application_gateway" "network" {
@@ -65,6 +66,7 @@ resource "azurerm_application_gateway" "network" {
 
   backend_address_pool {
     name = local.backend_address_pool_name
+    fqdns = local.appservice_fqdn
   }
 
   backend_http_settings {
