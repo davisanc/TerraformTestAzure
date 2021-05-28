@@ -68,7 +68,7 @@ resource "azurerm_application_gateway" "network" {
   backend_address_pool {
     name = local.backend_address_pool_name
     #fqdns = [ "juiceshop-app-service.azurewebsites.net" ]
-    fqdns = ["${azurerm_app_service.example.name}azurewebsites.net"]
+    fqdns = ["${azurerm_app_service.example.name}.azurewebsites.net"]
   }
 
   backend_http_settings {
@@ -78,7 +78,7 @@ resource "azurerm_application_gateway" "network" {
     port                  = 443
     protocol              = "Https"
     request_timeout       = 60
-    host_name             = "${azurerm_app_service.example.name}azurewebsites.net"
+    host_name             = "${azurerm_app_service.example.name}.azurewebsites.net"
   }
 
   http_listener {
