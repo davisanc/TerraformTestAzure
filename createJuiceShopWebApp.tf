@@ -19,7 +19,7 @@ resource "random_string" "webappname" {
 resource "azurerm_app_service" "example" {
   #"[concat('owaspdirect','-', uniqueString(resourceGroup().id))]"
   #name                = "juiceshop-app-service"
-  name                = [concat("juiceshop","-",random_string.webappname)]         
+  name                = "[concat("juiceshop","-",random_string.webappname)]"         
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.example.id
