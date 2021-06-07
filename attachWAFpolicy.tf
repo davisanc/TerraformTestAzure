@@ -67,7 +67,7 @@ resource "azurerm_application_gateway" "network" {
 #force change
   backend_address_pool {
     name = local.backend_address_pool_name
-    fqdns = ["${azurerm_app_service.example.name}.azurewebsites.net"]
+    fqdns = ["${azurerm_app_service.appservice.name}.azurewebsites.net"]
   }
 
   backend_http_settings {
