@@ -182,7 +182,7 @@ resource "random_id" "storage_account" {
 
 # Create our Azure Storage Account - WAF-DevOp-sa
 resource "azurerm_storage_account" "wafdevopssaapp" {
-  #name                     = "wafdevopssaapp"
+  #name                     = "wafdevopsaapp"
   name                     = "wafdevopssaapp${lower(random_id.storage_account.hex)}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
