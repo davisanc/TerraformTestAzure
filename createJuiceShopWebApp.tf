@@ -13,7 +13,7 @@ resource "azurerm_app_service_plan" "example" {
 #just a comment for change
 
 resource "random_id" "webappname" {
-  byte_length = 6
+  byte_length = 1
 }
 
 resource "azurerm_app_service" "example" {
