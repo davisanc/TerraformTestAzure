@@ -175,7 +175,7 @@ module "application-gateway" {
 }
 
 resource "random_id" "storage_account" {
-  byte_length = 8
+  byte_length = 1
 }
 
 
