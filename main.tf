@@ -174,9 +174,16 @@ module "application-gateway" {
   #firewall_policy_id = "/subscriptions/60e79550-d86a-4c92-a4e1-c7faa8c6ae74/resourceGroups/WAF-DevOps-app/providers/Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/WAF-Devops-wafpolicy"
 }
 
+resource "random_id" "storage_account" {
+  byte_length = 8
+}
+
+
+
 # Create our Azure Storage Account - WAF-DevOp-sa
 resource "azurerm_storage_account" "wafdevopssaapp" {
-  name                     = "wafdevopssaapp"
+  #name                     = "wafdevopssaapp"
+  name                     = "wafdevopssaapp${lower(random_id.storage_account.hex)}"
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   account_tier             = "Standard"
