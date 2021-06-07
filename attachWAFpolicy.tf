@@ -1,5 +1,5 @@
-resource "azurerm_virtual_network" "example" {
-  name                = "example-network"
+resource "azurerm_virtual_network" "vnet" {
+  name                = "vnet-app"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   address_space       = ["10.1.0.0/16"]
@@ -8,14 +8,14 @@ resource "azurerm_virtual_network" "example" {
 resource "azurerm_subnet" "frontend" {
   name                 = "frontend"
   resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.example.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.1.1.0/24"]
 }
 
 resource "azurerm_subnet" "backend" {
   name                 = "backend"
   resource_group_name  = azurerm_resource_group.rg.name
-  virtual_network_name = azurerm_virtual_network.example.name
+  virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.1.2.0/24"]
 }
 
@@ -28,14 +28,14 @@ resource "azurerm_public_ip" "example" {
 }
 
 locals {
-  backend_address_pool_name      = "${azurerm_virtual_network.example.name}-beap"
-  frontend_port_name             = "${azurerm_virtual_network.example.name}-feport"
-  frontend_ip_configuration_name = "${azurerm_virtual_network.example.name}-feip"
-  http_setting_name              = "${azurerm_virtual_network.example.name}-be-htst"
-  listener_name                  = "${azurerm_virtual_network.example.name}-httplstn"
-  request_routing_rule_name      = "${azurerm_virtual_network.example.name}-rqrt"
-  redirect_configuration_name    = "${azurerm_virtual_network.example.name}-rdrcfg"
-  appservice_fqdn                = "${azurerm_app_service.example.name}azurewebsites.net"
+  backend_address_pool_name      = "${azurerm_virtual_network.vnet.name}-beap"
+  frontend_port_name             = "${azurerm_virtual_network.vnet.name}-feport"
+  frontend_ip_configuration_name = "${azurerm_virtual_network.vnet.name}-feip"
+  http_setting_name              = "${azurerm_virtual_network.vnet.name}-be-htst"
+  listener_name                  = "${azurerm_virtual_network.vnet.name}-httplstn"
+  request_routing_rule_name      = "${azurerm_virtual_network.vnet.name}-rqrt"
+  redirect_configuration_name    = "${azurerm_virtual_network.vnet.name}-rdrcfg"
+  appservice_fqdn                = "${azurerm_app_service.appservice.name}azurewebsites.net"
   appservice_url           = "https://juiceshop-app-service.azurewebsites.net"
 }
 
@@ -67,18 +67,16 @@ resource "azurerm_application_gateway" "network" {
 #force change
   backend_address_pool {
     name = local.backend_address_pool_name
-    #fqdns = [ "juiceshop-app-service.azurewebsites.net" ]
     fqdns = ["${azurerm_app_service.example.name}.azurewebsites.net"]
   }
 
   backend_http_settings {
     name                  = local.http_setting_name
     cookie_based_affinity = "Disabled"
-    #path                  = "/path1/"
     port                  = 443
     protocol              = "Https"
     request_timeout       = 60
-    host_name             = "${azurerm_app_service.example.name}.azurewebsites.net"
+    host_name             = "${azurerm_app_service.appservice.name}.azurewebsites.net"
   }
 
   http_listener {

@@ -13,10 +13,10 @@ resource "azurerm_app_service_plan" "example" {
 #just a comment for change
 
 resource "random_id" "webappname" {
-  byte_length = 1
+  byte_length = 2
 }
 
-resource "azurerm_app_service" "example" {
+resource "azurerm_app_service" "appservice" {
   #"[concat('owaspdirect','-', uniqueString(resourceGroup().id))]"
   #name                = "juiceshop-app-service"
   #name                = "[concat("juiceshop","-","random_id.webappname")]"         
