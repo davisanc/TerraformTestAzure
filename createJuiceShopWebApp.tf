@@ -14,7 +14,7 @@ resource "azurerm_app_service_plan" "example" {
 resource "azurerm_app_service" "example" {
   #"[concat('owaspdirect','-', uniqueString(resourceGroup().id))]"
   #name                = "juiceshop-app-service"
-  name                = [concat('juiceshop','-',uniqueString(azurerm_resource_group.rg.name))]         
+  name                = [concat("juiceshop","-",uniqueString(azurerm_resource_group.rg.name))]         
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.example.id
