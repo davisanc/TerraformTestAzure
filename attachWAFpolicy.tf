@@ -39,6 +39,7 @@ locals {
   appservice_url           = "https://juiceshop-app-service.azurewebsites.net"
 }
 
+//create app-gateway
 resource "azurerm_application_gateway" "network" {
   name                = "example-appgateway"
   resource_group_name = azurerm_resource_group.rg.name
