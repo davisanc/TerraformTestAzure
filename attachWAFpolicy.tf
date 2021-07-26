@@ -60,7 +60,7 @@ resource "azurerm_application_gateway" "network" {
     name = local.frontend_port_name
     port = 80
   }
-//adding priv ip confg to app gw
+//adding priv ip confg to app gateway
   frontend_ip_configuration {
     name                 = local.frontend_ip_configuration_name
     public_ip_address_id = azurerm_public_ip.example.id
